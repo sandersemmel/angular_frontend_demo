@@ -9,10 +9,21 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductPageComponent {
   products: Product[] = [];
+  basketProducts: Product[] = [];
 
   productService = inject(ProductService);
 
   async ngOnInit(): Promise<void> {
     this.products = await this.productService.fetchProducts();
+  }
+  addProductToBasketHandler($product: Product): void {
+    this.basketProducts.push($product);
+  }
+  removeProductFromBasketHandler($product: Product) {
+    let foundProductIndex = this.basketProducts.indexOf($product);
+    if (foundProductIndex === -1) {
+      return;
+    }
+    this.basketProducts.splice(foundProductIndex, 1);
   }
 }

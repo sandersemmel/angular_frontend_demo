@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from 'src/app/model/Product';
 
 @Component({
@@ -8,4 +8,9 @@ import { Product } from 'src/app/model/Product';
 })
 export class ProductComponent {
   @Input({ required: true }) product!: Product;
+  @Output() addToBasketEvent = new EventEmitter<Product>();
+
+  emitEvent() {
+    this.addToBasketEvent.emit(this.product);
+  }
 }
