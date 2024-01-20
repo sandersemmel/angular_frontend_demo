@@ -1,3 +1,6 @@
 <h1>hello</h1>
 <p>product-page works!</p>
-<app-product>
+
+@for(product of products; track product.id){
+<app-product [product]="product"></app-product>
+}
