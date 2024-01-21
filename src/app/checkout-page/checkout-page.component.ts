@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-checkout-page',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './checkout-page.component.css'
 })
 export class CheckoutPageComponent {
+
+  _productService: ProductService = inject(ProductService);
 
 }

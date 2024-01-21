@@ -17,7 +17,9 @@ import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { RippleModule } from 'primeng/ripple';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CheckoutProductListComponent } from './checkout-page/checkout-product-list/checkout-product-list.component';
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({
@@ -28,9 +30,10 @@ import { RippleModule } from 'primeng/ripple';
     BasketComponent,
     CheckoutPageComponent,
     MenuComponent,
-    TopBarComponent
+    TopBarComponent,
+    CheckoutProductListComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, CardModule, ButtonModule, TabMenuModule, AvatarModule, AvatarGroupModule, RippleModule],
+  imports: [BrowserModule, AppRoutingModule, CardModule, ButtonModule, TabMenuModule, AvatarModule, AvatarGroupModule, RippleModule, BrowserAnimationsModule, TableModule],
   providers: [ProductService, DatabaseProductService],
   bootstrap: [AppComponent],
 })
