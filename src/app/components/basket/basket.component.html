@@ -1,0 +1,2 @@
+<p-button label="Basket" icon="pi pi-shopping-cart" [badge]="_productService.$basketProducts().length.toString()"
+    badgeClass="p-badge-danger" [outlined]="true" (onClick)="_router.navigate(['checkout'])"></p-button>

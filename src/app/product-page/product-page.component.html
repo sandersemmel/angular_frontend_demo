@@ -1,6 +1,11 @@
-<h1>hello</h1>
-<p>product-page works!</p>
+<div class="grid">
+    @for(product of _productService.$allProducts(); track product.id){
 
-@for(product of _productService.$allProducts(); track product.id){
-<app-product [product]="product"></app-product>
-}
+    <div class="col">
+        <div class="text-center p-3 border-round-sm  font-bold">
+            <app-product [product]="product"></app-product>
+        </div>
+    </div>
+
+    }
+</div>

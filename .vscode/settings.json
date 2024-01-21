@@ -1,0 +1,9 @@
+{
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "off", // Disable word wrap
+    "editor.tabSize": 2, // Set the desired tab size
+    "editor.insertSpaces": true
+  }
+}

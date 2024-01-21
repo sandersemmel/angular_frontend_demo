@@ -1,7 +1,8 @@
 <h1>
-    <p-card [header]="product.name">
-        <p class="m-0">
-            {{product.price}}
+    <p-card [header]="">
+        <p class="">
+            {{product.name}}
+            {{product.price}} €
         </p>
 
         <p-button label="Buy" (onClick)="productService.addProductToBasket(product)"></p-button>
