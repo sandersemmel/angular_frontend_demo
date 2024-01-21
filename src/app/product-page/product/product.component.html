@@ -4,6 +4,6 @@
             {{product.price}}
         </p>
 
-        <p-button label="Buy" (onClick)="emitEvent()"></p-button>
+        <p-button label="Buy" (onClick)="productService.addProductToBasket(product)"></p-button>
     </p-card>
 </h1>

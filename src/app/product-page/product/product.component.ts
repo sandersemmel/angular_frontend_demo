@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/model/Product';
 
 @Component({
@@ -10,7 +11,8 @@ export class ProductComponent {
   @Input({ required: true }) product!: Product;
   @Output() addToBasketEvent = new EventEmitter<Product>();
 
-  emitEvent() {
-    this.addToBasketEvent.emit(this.product);
-  }
+  productService: ProductService = inject(ProductService);
+  
+
+
 }

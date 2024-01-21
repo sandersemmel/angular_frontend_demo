@@ -1,6 +1,6 @@
 <h1>hello</h1>
 <p>product-page works!</p>
 
-@for(product of products; track product.id){
-<app-product [product]="product" (addToBasketEvent)="addProductToBasket($event)"></app-product>
+@for(product of _productService.$allProducts(); track product.id){
+<app-product [product]="product"></app-product>
 }

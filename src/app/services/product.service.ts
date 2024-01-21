@@ -1,25 +1,30 @@
-import { Injectable } from '@angular/core';
-import { Product } from '../model/Product';
+import { Component, Injectable, OnInit, inject, signal } from '@angular/core';
+import { Product } from 'src/app/model/Product';
+import { DatabaseProductService } from 'src/app/outgoing-services/DatabaseProduct.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  private baseUrl: string = 'http://localhost:8080';
-  private productsUrl: string = this.baseUrl + '/product';
-  constructor() {}
+  $basketProducts = signal<Product[]>([]);
+  $allProducts = signal<Product[]>([]);
+  private _DB_ProductService: DatabaseProductService = inject(DatabaseProductService);
 
-  async fetchProducts(): Promise<Product[]> {
-    const requestInit: RequestInit = {
-      mode: 'cors',
-    };
+  constructor() {
+    this.fetchAllProducts();
+  }
 
-    let response = await fetch(
-      this.productsUrl + '/getallproducts',
-      requestInit
-    );
+  async fetchAllProducts() {
+    let allFetchedProducts = await this._DB_ProductService.fetchDatabaseProducts();
+    this.$allProducts.set(allFetchedProducts);
+  }
 
-    let json = await response.json();
-    return json;
+  addProductToBasket(product: Product) {
+    this.$basketProducts.update((products) => { return [...products, product]; });
+  }
+  removeProductFromBasketHandler(product: Product) {
+    this.$basketProducts.update((products) => {
+      return products.filter((p) => p.id == product.id);
+    });
   }
 }

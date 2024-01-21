@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { Product } from '../model/Product';
+import { DatabaseProductService } from '../outgoing-services/DatabaseProduct.service';
 import { ProductService } from '../services/product.service';
 
 @Component({
@@ -8,22 +9,11 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./product-page.component.css'],
 })
 export class ProductPageComponent {
-  products: Product[] = [];
-  basketProducts: Product[] = [];
+  _productService: ProductService = inject(ProductService);
 
-  productService = inject(ProductService);
+  ngOnInit() {
+    console.log("Product Page: ");
+    console.log(this._productService.$allProducts());
+  }
 
-  async ngOnInit(): Promise<void> {
-    this.products = await this.productService.fetchProducts();
-  }
-  addProductToBasketHandler($product: Product): void {
-    this.basketProducts.push($product);
-  }
-  removeProductFromBasketHandler($product: Product) {
-    let foundProductIndex = this.basketProducts.indexOf($product);
-    if (foundProductIndex === -1) {
-      return;
-    }
-    this.basketProducts.splice(foundProductIndex, 1);
-  }
 }
