@@ -16,6 +16,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
+import { RippleModule } from 'primeng/ripple';
+
 
 
 @NgModule({
@@ -28,7 +30,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
     MenuComponent,
     TopBarComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, CardModule, ButtonModule, TabMenuModule, AvatarModule, AvatarGroupModule],
+  imports: [BrowserModule, AppRoutingModule, CardModule, ButtonModule, TabMenuModule, AvatarModule, AvatarGroupModule, RippleModule],
   providers: [ProductService, DatabaseProductService],
   bootstrap: [AppComponent],
 })
