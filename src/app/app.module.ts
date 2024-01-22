@@ -26,6 +26,10 @@ import { ManagementPageComponent } from './management-page/management-page.compo
 import { InputTextModule } from 'primeng/inputtext';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { Divider, DividerModule } from 'primeng/divider';
+import { AddDiscountComponent } from './management-page/add-discount/add-discount.component';
+import { DropdownModule } from 'primeng/dropdown';
+
 
 @NgModule({
   declarations: [
@@ -38,13 +42,14 @@ import { MessageModule } from 'primeng/message';
     TopBarComponent,
     CheckoutProductListComponent,
     AddProductComponent,
-    ManagementPageComponent
+    ManagementPageComponent,
+    AddDiscountComponent
   ],
   imports: [BrowserModule, AppRoutingModule, CardModule,
     ButtonModule, TabMenuModule, AvatarModule,
     AvatarGroupModule, RippleModule, BrowserAnimationsModule,
     TableModule, ReactiveFormsModule, FormsModule,
-    InputTextModule, MessagesModule, MessageModule],
+    InputTextModule, MessagesModule, MessageModule, DividerModule, DropdownModule],
   providers: [ProductService, DatabaseProductService],
   bootstrap: [AppComponent],
 })
