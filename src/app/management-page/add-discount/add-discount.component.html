@@ -1,0 +1,31 @@
+<div class="p-fluid grid">
+    <form [formGroup]="myForm">
+
+        <div class="field col-12">
+            <label for="productName">Select product for discount:</label>
+            <p-dropdown formControlName="productID" [options]="_productService.$allProducts()" optionLabel="name"
+                placeholder="Select a product for discount"></p-dropdown>
+        </div>
+
+        <div class="field col-12">
+            <label for="percentageOff">Percentage off product:</label>
+            <input id="percentageOff" label="percentageOff" type="number" pInputText formControlName="percentageOff" />
+
+            <p-message *ngIf="percentageOff.errors?.['pattern'] && (percentageOff.dirty || percentageOff.touched)"
+                severity=" error" text="Insert numbers only"></p-message>
+            <p-message *ngIf="percentageOff.errors?.['required'] && (percentageOff.dirty || percentageOff.touched)"
+                severity=" error" text="This is required. Enter a percentage off."></p-message>
+        </div>
+
+
+        <div class="field col-12">
+            <label for="mustBuyAmount">Enter amount you must buy to be eligible for discount:</label>
+            <input id="mustBuyAmount" label="mustBuyAmount" type="text" pInputText formControlName="mustBuyAmount" />
+
+            <p-message *ngIf="percentageOff.errors?.['pattern'] && (mustBuyAmount.dirty || mustBuyAmount.touched)"
+                severity=" error" text="Insert numbers only"></p-message>
+        </div>
+
+        <p-button type="submit">Submit</p-button>
+    </form>
+</div>
