@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/model/Product';
 
 @Component({
   selector: 'app-add-product',
@@ -21,6 +22,18 @@ export class AddProductComponent implements OnInit {
       productPrice: this.productPrice,
       SKU: ['', [Validators.required]],
     });
+  }
+
+  createDatabaseProduct() {
+
+    let product: Product = {
+      name: this.myForm.get("productName")?.value,
+      price: this.myForm.get("productPrice")?.value,
+      id: 0,
+      SKU: this.myForm.get("SKU")?.value,
+    }
+
+    this._productService.createDatabaseProduct(product);
   }
 
 }

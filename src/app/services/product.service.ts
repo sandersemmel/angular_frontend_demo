@@ -27,7 +27,7 @@ export class ProductService {
       return products.filter((p) => p.id == product.id);
     });
   }
-  createDatabaseProduct(param: any) {
-    this._DB_ProductService.createDatabaseProduct(param);
+  createDatabaseProduct(product: Product) {
+    this._DB_ProductService.createDatabaseProduct(product);
   }
 }

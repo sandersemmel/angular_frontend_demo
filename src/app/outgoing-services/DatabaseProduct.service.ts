@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../model/Product';
+import { Keys } from '../common/Keys';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DatabaseProductService {
-  private baseUrl: string = 'http://localhost:8080';
-  private productsUrl: string = this.baseUrl + '/product';
+  private baseUrl: string = '';
+  private productsUrl: string = Keys.devEnvUrl + '/product';
   constructor() { }
 
   async fetchDatabaseProducts(): Promise<Product[]> {
@@ -23,7 +24,19 @@ export class DatabaseProductService {
     return json;
   }
 
-  createDatabaseProduct(param: any) {
-    console.log(param);
+  async createDatabaseProduct(product: Product) {
+    let createProductUrl = this.productsUrl + "/createproduct";
+
+    const requestInit: RequestInit = {
+      method: "post",
+      body: JSON.stringify(product),
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    let response = await fetch(createProductUrl, requestInit);
+
+    console.log(await response.json());
   }
 }
