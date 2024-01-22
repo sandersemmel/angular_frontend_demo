@@ -20,6 +20,10 @@ import { RippleModule } from 'primeng/ripple';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckoutProductListComponent } from './checkout-page/checkout-product-list/checkout-product-list.component';
 import { TableModule } from 'primeng/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddProductComponent } from './management-page/add-product/add-product.component';
+import { ManagementPageComponent } from './management-page/management-page.component';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 @NgModule({
@@ -31,9 +35,11 @@ import { TableModule } from 'primeng/table';
     CheckoutPageComponent,
     MenuComponent,
     TopBarComponent,
-    CheckoutProductListComponent
+    CheckoutProductListComponent,
+    AddProductComponent,
+    ManagementPageComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, CardModule, ButtonModule, TabMenuModule, AvatarModule, AvatarGroupModule, RippleModule, BrowserAnimationsModule, TableModule],
+  imports: [BrowserModule, AppRoutingModule, CardModule, ButtonModule, TabMenuModule, AvatarModule, AvatarGroupModule, RippleModule, BrowserAnimationsModule, TableModule, ReactiveFormsModule, FormsModule, InputTextModule],
   providers: [ProductService, DatabaseProductService],
   bootstrap: [AppComponent],
 })
