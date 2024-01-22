@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-add-product',
@@ -7,15 +8,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 
 export class AddProductComponent implements OnInit {
-  myForm!: FormGroup;
 
+  _productService: ProductService = inject(ProductService);
+
+  myForm!: FormGroup;
   fb: FormBuilder = inject(FormBuilder);
+  productPrice: FormControl = this.fb.control('', [Validators.required, Validators.pattern("^[0-9]*$")])
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      // Example form controls
       productName: ['', Validators.required],
-      productPrice: ['', Validators.required],
+      productPrice: this.productPrice,
       SKU: ['', [Validators.required]],
     });
   }

@@ -24,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddProductComponent } from './management-page/add-product/add-product.component';
 import { ManagementPageComponent } from './management-page/management-page.component';
 import { InputTextModule } from 'primeng/inputtext';
-
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,11 @@ import { InputTextModule } from 'primeng/inputtext';
     AddProductComponent,
     ManagementPageComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, CardModule, ButtonModule, TabMenuModule, AvatarModule, AvatarGroupModule, RippleModule, BrowserAnimationsModule, TableModule, ReactiveFormsModule, FormsModule, InputTextModule],
+  imports: [BrowserModule, AppRoutingModule, CardModule,
+    ButtonModule, TabMenuModule, AvatarModule,
+    AvatarGroupModule, RippleModule, BrowserAnimationsModule,
+    TableModule, ReactiveFormsModule, FormsModule,
+    InputTextModule, MessagesModule, MessageModule],
   providers: [ProductService, DatabaseProductService],
   bootstrap: [AppComponent],
 })

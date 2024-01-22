@@ -22,4 +22,8 @@ export class DatabaseProductService {
     let json = await response.json();
     return json;
   }
+
+  createDatabaseProduct(param: any) {
+    console.log(param);
+  }
 }

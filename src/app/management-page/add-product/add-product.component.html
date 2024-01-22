@@ -1,8 +1,25 @@
-<form [formGroup]="myForm">
+<div class="p-fluid grid">
+    <form [formGroup]="myForm">
 
-    <input label="productName" type="text" pInputText formControlName="productName" />
-    <input label="productPrice" type="text" pInputText formControlName="productPrice" />
-    <input label="SKU" type="text" pInputText formControlName="SKU" />
+        <div class="field col-12">
+            <label for="productName">Name of the product</label>
+            <input id="productName" label="productName" type="text" pInputText formControlName="productName" />
+        </div>
 
-    <p-button type="submit">Submit</p-button>
-</form>
+        <div class="field col-12">
+            <label for="productPrice">Price of the product</label>
+            <input id="productPrice" label="productPrice" type="text" pInputText formControlName="productPrice" />
+            <p-message *ngIf="productPrice.errors?.['pattern'] && (productPrice.dirty || productPrice.touched)"
+                severity=" error" text="Insert numbers only"></p-message>
+            <p-message *ngIf="productPrice.errors?.['required'] && (productPrice.dirty || productPrice.touched)"
+                severity=" error" text="This is required. Enter a price."></p-message>
+        </div>
+
+        <div class="field col-12">
+            <label for="SKU">SKU</label>
+            <input id="SKU" label="SKU" type="text" pInputText formControlName="SKU" />
+        </div>
+
+        <p-button type="submit" (onClick)="_productService.createDatabaseProduct(this.myForm)">Submit</p-button>
+    </form>
+</div>
