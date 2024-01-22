@@ -4,8 +4,6 @@
             {{product.name}}
             {{product.price}} €
         </p>
-
-
-        <p-button label="Buy" (onClick)="productService.addProductToBasket(product)"></p-button>
+        <p-button label="Buy" (onClick)="_checkoutService.addProductToCart(product)"></p-button>
     </p-card>
 </h1>

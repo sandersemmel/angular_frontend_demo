@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { CheckoutService } from 'src/app/services/checkout.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -10,5 +11,6 @@ import { ProductService } from 'src/app/services/product.service';
 export class BasketComponent {
   _router: Router = inject(Router);
   _productService: ProductService = inject(ProductService);
+  _checkoutService: CheckoutService = inject(CheckoutService);
 
 }

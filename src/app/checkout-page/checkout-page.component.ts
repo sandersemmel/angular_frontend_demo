@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ProductService } from '../services/product.service';
+import { CheckoutService } from '../services/checkout.service';
 
 @Component({
   selector: 'app-checkout-page',
@@ -9,5 +10,6 @@ import { ProductService } from '../services/product.service';
 export class CheckoutPageComponent {
 
   _productService: ProductService = inject(ProductService);
+  _checkoutService: CheckoutService = inject(CheckoutService);
 
 }

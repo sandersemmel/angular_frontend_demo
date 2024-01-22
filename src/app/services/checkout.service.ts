@@ -1,6 +1,7 @@
-import { Injectable, Signal, computed, inject } from '@angular/core';
+import { Injectable, Signal, computed, inject, signal } from '@angular/core';
 import { ProductService } from './product.service';
 import { CartProduct } from '../model/CartProduct';
+import { Product } from '../model/Product';
 
 @Injectable({
   providedIn: 'root'
@@ -8,23 +9,43 @@ import { CartProduct } from '../model/CartProduct';
 export class CheckoutService {
 
   _productService: ProductService = inject(ProductService);
-  basketItemsWithQuantities: Signal<CartProduct[]> = computed<CartProduct[]>(() => {
-    this._productService.$basketProducts().map((product) => {
-      let basketItemExistsInCart = this.basketItemsWithQuantities().find(e => e.product.id == product.id);
-      //let basketItem: CartProduct = {b}
-      if (basketItemExistsInCart) {
-        let basketItemWithIncreasedCount: CartProduct = { ...basketItemExistsInCart, quantity: basketItemExistsInCart.quantity + 1 }
-      } else {
-        return []
-      }
-      return []
-    })
+  basketItems = signal<CartProduct[]>([]);
+  totalBasketItemsCount = computed<number>((): number => {
+    let total: number = this.basketItems().reduce((sum, item) => { return sum + item.quantity }, 0);
+    return total;
   })
+
 
   constructor() {
   }
 
-  fetchCheckoutTotal() {
 
+
+  addProductToCart(newProduct: Product) {
+    this.basketItems.update((items) => {
+
+
+      if (!items.length) {
+        return [{ product: newProduct, quantity: 1 }]
+      }
+
+      let doesProductExistInCart = items.find(cartProduct => cartProduct.product.id === newProduct.id);
+
+      if (doesProductExistInCart) {
+        // update product quantities
+        return items.map((cartProduct) => {
+          if (cartProduct.product.id === newProduct.id) {
+            return { ...cartProduct, quantity: cartProduct.quantity + 1 }
+          }
+          return cartProduct;
+
+        })
+      }
+      // add the new product
+      return [...items, { product: newProduct, quantity: 1 }];
+    })
   }
+
+
+
 }

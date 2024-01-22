@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/model/Product';
-import { trigger, transition, style, animate, state } from '@angular/animations';
+import { CheckoutService } from 'src/app/services/checkout.service';
 
 @Component({
   selector: 'app-product',
@@ -13,5 +13,6 @@ export class ProductComponent {
   @Output() addToBasketEvent = new EventEmitter<Product>();
 
   productService: ProductService = inject(ProductService);
+  _checkoutService: CheckoutService = inject(CheckoutService);
 
 }
