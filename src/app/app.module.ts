@@ -29,6 +29,8 @@ import { MessageModule } from 'primeng/message';
 import { Divider, DividerModule } from 'primeng/divider';
 import { AddDiscountComponent } from './management-page/add-discount/add-discount.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { RadioButtonModule } from 'primeng/radiobutton';
+
 
 
 @NgModule({
@@ -49,7 +51,7 @@ import { DropdownModule } from 'primeng/dropdown';
     ButtonModule, TabMenuModule, AvatarModule,
     AvatarGroupModule, RippleModule, BrowserAnimationsModule,
     TableModule, ReactiveFormsModule, FormsModule,
-    InputTextModule, MessagesModule, MessageModule, DividerModule, DropdownModule],
+    InputTextModule, MessagesModule, MessageModule, DividerModule, DropdownModule, RadioButtonModule],
   providers: [ProductService, DatabaseProductService],
   bootstrap: [AppComponent],
 })

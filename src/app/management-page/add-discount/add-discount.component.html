@@ -1,26 +1,43 @@
 <div class="p-fluid grid">
     <form [formGroup]="myForm">
 
-        <div class="field col-12">
+        <!--AGREEMENT TYPE-->
+        <div *ngFor="let agreementType of agreementTypesList" class="field-checkbox">
+            <p-radioButton [inputId]="agreementType.radioValue" [value]="agreementType.radioValue"
+                formControlName="agreementType"></p-radioButton>
+            <label [for]="agreementType.radioValue" class="ml-2">{{ agreementType.label }}</label>
+        </div>
+        <!-- AGREEMENT TYPE -->
+
+        <div *ngIf="agreementType.value === PERCENTAGE_OFF_SINGLE_PRODUCT.radioValue" class="field col-12">
             <label for="productName">Select product for discount:</label>
             <p-dropdown formControlName="productID" [options]="_productService.$allProducts()" optionLabel="name"
                 placeholder="Select a product for discount"></p-dropdown>
         </div>
 
-        <div class="field col-12">
-            <label for="percentageOff">Percentage off product:</label>
+        <div *ngIf="agreementType.value === PERCENTAGE_OFF_SINGLE_PRODUCT.radioValue || PERCENTAGE_OFF_WHOLE_ORDER.radioValue"
+            class="field col-12">
+            <label for="percentageOff">Discount %:</label>
             <input id="percentageOff" label="percentageOff" type="number" pInputText formControlName="percentageOff" />
 
             <p-message *ngIf="percentageOff.errors?.['pattern'] && (percentageOff.dirty || percentageOff.touched)"
                 severity=" error" text="Insert numbers only"></p-message>
             <p-message *ngIf="percentageOff.errors?.['required'] && (percentageOff.dirty || percentageOff.touched)"
-                severity=" error" text="This is required. Enter a percentage off."></p-message>
+                severity=" error" text="This is required. Please insert discount %"></p-message>
         </div>
 
-
-        <div class="field col-12">
-            <label for="mustBuyAmount">Enter amount you must buy to be eligible for discount:</label>
+        <div *ngIf="agreementType.value === BUY_X_PAY_Y.radioValue" class="field col-12">
+            <label for="mustBuyAmount">Must buy amount:</label>
             <input id="mustBuyAmount" label="mustBuyAmount" type="text" pInputText formControlName="mustBuyAmount" />
+
+            <p-message *ngIf="percentageOff.errors?.['pattern'] && (mustBuyAmount.dirty || mustBuyAmount.touched)"
+                severity=" error" text="Insert numbers only"></p-message>
+        </div>
+
+        <div *ngIf="agreementType.value === BUY_X_PAY_Y.radioValue" class="field col-12">
+            <label for="onlyPayForAmount">Only pay for amount:</label>
+            <input id="onlyPayForAmount" label="onlyPayForAmount" type="text" pInputText
+                formControlName="onlyPayForAmount" />
 
             <p-message *ngIf="percentageOff.errors?.['pattern'] && (mustBuyAmount.dirty || mustBuyAmount.touched)"
                 severity=" error" text="Insert numbers only"></p-message>

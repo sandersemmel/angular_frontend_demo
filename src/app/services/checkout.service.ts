@@ -15,15 +15,11 @@ export class CheckoutService {
     return total;
   })
 
-
   constructor() {
   }
 
-
-
   addProductToCart(newProduct: Product) {
     this.basketItems.update((items) => {
-
 
       if (!items.length) {
         return [{ product: newProduct, quantity: 1 }]

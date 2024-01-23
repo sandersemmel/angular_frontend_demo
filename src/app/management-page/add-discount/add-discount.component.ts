@@ -8,13 +8,31 @@ import { ProductService } from 'src/app/services/product.service';
 })
 
 export class AddDiscountComponent {
+  fb: FormBuilder = inject(FormBuilder);
+
+  //Agreement types
+  PERCENTAGE_OFF_SINGLE_PRODUCT = {
+    radioValue: "PERCENTAGE_OFF_SINGLE_PRODUCT",
+    label: "Percentage off single product"
+  };
+  PERCENTAGE_OFF_WHOLE_ORDER = {
+    radioValue: "PERCENTAGE_OFF_WHOLE_ORDER",
+    label: "Percentage off whole order"
+  };
+  BUY_X_PAY_Y = {
+    radioValue: "BUY_X_PAY_Y",
+    label: "Buy x only pay for y"
+  };
+
+  agreementTypesList = [this.PERCENTAGE_OFF_SINGLE_PRODUCT, this.PERCENTAGE_OFF_WHOLE_ORDER, this.BUY_X_PAY_Y]
 
   _productService: ProductService = inject(ProductService);
-
   myForm!: FormGroup;
-  fb: FormBuilder = inject(FormBuilder);
-  productID: FormControl = this.fb.control('', Validators.required);
-  percentageOff: FormControl = this.fb.control('', [Validators.required, Validators.pattern("^[0-9]*$")])
+
+  // FORM CONTROLS
+  agreementType: FormControl = this.fb.control('', Validators.required);
+  productID: FormControl = this.fb.control('');
+  percentageOff: FormControl = this.fb.control('', [Validators.pattern("^[0-9]*$")])
   mustBuyAmount: FormControl = this.fb.control('', [Validators.pattern("^[0-9]*$")])
   onlyPayForAmount: FormControl = this.fb.control('', [Validators.pattern("^[0-9]*$")])
 
@@ -22,7 +40,7 @@ export class AddDiscountComponent {
   ngOnInit() {
     this.myForm = this.fb.group({
       productID: this.productID,
-      agreementType: ['', Validators.required],
+      agreementType: this.agreementType,
       percentageOff: this.percentageOff,
       mustBuyAmount: this.mustBuyAmount,
       onlyPayForAmount: this.onlyPayForAmount
@@ -30,7 +48,7 @@ export class AddDiscountComponent {
   }
 
   createDatabaseDiscountAgreement() {
-
-  }
+    this.
+  } 
 
 }
