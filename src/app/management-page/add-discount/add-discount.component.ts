@@ -48,7 +48,7 @@ export class AddDiscountComponent {
   }
 
   createDatabaseDiscountAgreement() {
-    this.
-  } 
+
+  }
 
 }
