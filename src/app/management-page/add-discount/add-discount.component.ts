@@ -14,7 +14,7 @@ export class AddDiscountComponent {
 
   //Agreement types
   PERCENTAGE_OFF_SINGLE_PRODUCT = {
-    radioValue: "PERCENTAGE_OFF_SINGLE_PRODUCT",
+    radioValue: "PERCENTAGE_OFF_PRODUCT",
     label: "Percentage off single product"
   };
   PERCENTAGE_OFF_WHOLE_ORDER = {
@@ -22,7 +22,7 @@ export class AddDiscountComponent {
     label: "Percentage off whole order"
   };
   BUY_X_PAY_Y = {
-    radioValue: "BUY_X_PAY_Y",
+    radioValue: "BUY_X_ONLY_PAY_Y",
     label: "Buy x only pay for y"
   };
 
@@ -35,10 +35,10 @@ export class AddDiscountComponent {
 
   // FORM CONTROLS
   agreementType: FormControl = this.fb.control('', Validators.required);
-  productID: FormControl = this.fb.control('');
-  percentageOff: FormControl = this.fb.control('', [Validators.pattern("^[0-9]*$")])
-  mustBuyAmount: FormControl = this.fb.control('', [Validators.pattern("^[0-9]*$")])
-  onlyPayForAmount: FormControl = this.fb.control('', [Validators.pattern("^[0-9]*$")])
+  productID: FormControl = this.fb.control(null);
+  percentageOff: FormControl = this.fb.control(null, [Validators.pattern("^[0-9]*$")])
+  mustBuyAmount: FormControl = this.fb.control(null, [Validators.pattern("^[0-9]*$")])
+  onlyPayForAmount: FormControl = this.fb.control(null, [Validators.pattern("^[0-9]*$")])
 
 
   ngOnInit() {
@@ -53,11 +53,11 @@ export class AddDiscountComponent {
 
   createDatabaseDiscountAgreement() {
     let DTO_DiscountAgreement: DTO_DiscountAgreement = {
-      productId: this.productID.value,
+      productId: this.productID.value?.id,
       agreementType: this.agreementType.value,
       percentageOff: this.percentageOff.value,
-      mustBuyAmount: this.mustBuyAmount.value,
-      onlyPayForAmount: this.onlyPayForAmount.value
+      mustBuyAmount: this.mustBuyAmount.value ?? 0,
+      onlyPayForAmount: this.onlyPayForAmount.value ?? 0
     }
 
     this._discountService.createDatabaseDiscount(DTO_DiscountAgreement);

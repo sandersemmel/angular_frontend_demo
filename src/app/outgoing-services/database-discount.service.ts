@@ -16,7 +16,10 @@ export class DatabaseDiscountService {
     const requestInit: RequestInit = {
       mode: 'cors',
       body: JSON.stringify(DTO_DiscountAgreement),
-      method: 'POST'
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      }
     };
 
     let response = await fetch(
