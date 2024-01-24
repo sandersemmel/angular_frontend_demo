@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DiscountService } from 'src/app/services/discount.service';
 import { ProductService } from 'src/app/services/product.service';
+import { DTO_DiscountAgreement } from 'src/app/dto/DTO_DiscountAgreement';
 
 @Component({
   selector: 'app-add-discount',
@@ -27,6 +29,8 @@ export class AddDiscountComponent {
   agreementTypesList = [this.PERCENTAGE_OFF_SINGLE_PRODUCT, this.PERCENTAGE_OFF_WHOLE_ORDER, this.BUY_X_PAY_Y]
 
   _productService: ProductService = inject(ProductService);
+  _discountService: DiscountService = inject(DiscountService);
+
   myForm!: FormGroup;
 
   // FORM CONTROLS
@@ -48,7 +52,15 @@ export class AddDiscountComponent {
   }
 
   createDatabaseDiscountAgreement() {
+    let DTO_DiscountAgreement: DTO_DiscountAgreement = {
+      productId: this.productID.value,
+      agreementType: this.agreementType.value,
+      percentageOff: this.percentageOff.value,
+      mustBuyAmount: this.mustBuyAmount.value,
+      onlyPayForAmount: this.onlyPayForAmount.value
+    }
 
+    this._discountService.createDatabaseDiscount(DTO_DiscountAgreement);
   }
 
 }
