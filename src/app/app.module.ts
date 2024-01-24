@@ -30,6 +30,7 @@ import { Divider, DividerModule } from 'primeng/divider';
 import { AddDiscountComponent } from './management-page/add-discount/add-discount.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { AttachDiscountToCustomerComponent } from './management-page/attach-discount-to-customer/attach-discount-to-customer.component';
 
 
 
@@ -45,7 +46,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     CheckoutProductListComponent,
     AddProductComponent,
     ManagementPageComponent,
-    AddDiscountComponent
+    AddDiscountComponent,
+    AttachDiscountToCustomerComponent
   ],
   imports: [BrowserModule, AppRoutingModule, CardModule,
     ButtonModule, TabMenuModule, AvatarModule,
