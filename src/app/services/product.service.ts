@@ -14,9 +14,13 @@ export class ProductService {
     this.fetchAllProducts();
   }
 
-  async fetchAllProducts() {
+  async fetchAllProducts(): Promise<Product[]> {
     let allFetchedProducts = await this._DB_ProductService.fetchDatabaseProducts();
     this.$allProducts.set(allFetchedProducts);
+    return allFetchedProducts;
+  }
+  async fetchFromDatabase(): Promise<Product[]> {
+    return await this._DB_ProductService.fetchDatabaseProducts();
   }
 
   addProductToBasket(product: Product) {
@@ -27,7 +31,8 @@ export class ProductService {
       return products.filter((p) => p.id == product.id);
     });
   }
-  createDatabaseProduct(product: Product) {
+  async createDatabaseProduct(product: Product) {
     this._DB_ProductService.createDatabaseProduct(product);
+    setTimeout(() => { this.fetchAllProducts() }, (1000));
   }
 }

@@ -6,6 +6,9 @@ import { Customer } from '../model/Customer';
   providedIn: 'root'
 })
 export class CustomerService {
+  attachDiscountToCustomer(id: any, id1: any) {
+
+  }
 
   $databaseCustomers = signal<Customer[]>([]);
   _DB_CustomerService: DatabaseCustomerService = inject(DatabaseCustomerService);

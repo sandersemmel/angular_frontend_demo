@@ -1,7 +1,15 @@
-<form [formGroup]="myForm">
-    <p-dropdown formControlName="selectedCustomer" [options]="_customerService.$databaseCustomers()" optionLabel="id"
-        placeholder="Select customer"></p-dropdown>
+<h2>Add a discount for customer</h2>
+<div class="p-fluid grid">
+    <form [formGroup]="myForm">
+        <div class="field col-12">
+            <p-dropdown formControlName="selectedCustomer" [options]="_customerService.$databaseCustomers()"
+                optionLabel="id" placeholder="Select customer"></p-dropdown>
+        </div>
+        <div class="field col-12">
+            <p-dropdown formControlName="selectedDiscount" [options]="_discountService.$discounts()" optionLabel="id"
+                placeholder="Select discount"></p-dropdown>
+        </div>
 
-    <p-dropdown formControlName="selectedDiscount" [options]="_discountService.$discounts()" optionLabel="id"
-        placeholder="Select discount"></p-dropdown>
-</form>
+        <p-button type="submit" (onClick)="attachDiscountToCustomer()">Submit</p-button>
+    </form>
+</div>

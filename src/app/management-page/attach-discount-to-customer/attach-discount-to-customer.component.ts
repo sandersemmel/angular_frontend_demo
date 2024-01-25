@@ -23,4 +23,8 @@ export class AttachDiscountToCustomerComponent implements OnInit {
       selectedDiscount: this.selectedDiscount
     });
   }
+
+  attachDiscountToCustomer() {
+    this._customerService.attachDiscountToCustomer(this.selectedCustomer.value.id, this.selectedDiscount.value.id);
+  }
 }

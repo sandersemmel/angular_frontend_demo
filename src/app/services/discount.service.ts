@@ -17,6 +17,7 @@ export class DiscountService {
 
   createDatabaseDiscount(DTO_DiscountAgreement: DTO_DiscountAgreement) {
     this._DB_DiscountService.createDatabaseDiscountAgreement(DTO_DiscountAgreement)
+    setTimeout(() => { this.fetchDatabaseDiscountAgreements() }, (1000));
   }
 
   async fetchDatabaseDiscountAgreements() {
