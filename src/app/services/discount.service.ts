@@ -12,7 +12,7 @@ export class DiscountService {
   _DB_DiscountService: DatabaseDiscountService = inject(DatabaseDiscountService);
 
   constructor() {
-
+    this.fetchDatabaseDiscountAgreements();
   }
 
   createDatabaseDiscount(DTO_DiscountAgreement: DTO_DiscountAgreement) {

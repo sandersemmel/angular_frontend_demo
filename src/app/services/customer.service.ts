@@ -11,9 +11,7 @@ export class CustomerService {
   _DB_CustomerService: DatabaseCustomerService = inject(DatabaseCustomerService);
 
   constructor() {
-    this._DB_CustomerService.fetchDatabaseCustomers().then(e => {
-      this.$databaseCustomers.set(e);
-    });
+    this.fetchAllDatabaseCustomers();
   }
 
   async fetchAllDatabaseCustomers() {
