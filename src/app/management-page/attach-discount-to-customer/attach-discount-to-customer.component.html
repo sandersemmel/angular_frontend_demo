@@ -1,2 +1,7 @@
-<p-dropdown formControlName="productID" [options]="_productService.$allProducts()" optionLabel="name"
-placeholder="Select a product for discount"></p-dropdown>
+<form [formGroup]="myForm">
+    <p-dropdown formControlName="selectedCustomer" [options]="_customerService.$databaseCustomers()" optionLabel="id"
+        placeholder="Select customer"></p-dropdown>
+
+    <p-dropdown formControlName="selectedDiscount" [options]="_discountService.$discounts()" optionLabel="id"
+        placeholder="Select discount"></p-dropdown>
+</form>

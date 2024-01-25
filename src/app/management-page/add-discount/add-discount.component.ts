@@ -10,7 +10,6 @@ import { DTO_DiscountAgreement } from 'src/app/dto/DTO_DiscountAgreement';
 })
 
 export class AddDiscountComponent {
-  fb: FormBuilder = inject(FormBuilder);
 
   //Agreement types
   PERCENTAGE_OFF_SINGLE_PRODUCT = {
@@ -28,6 +27,7 @@ export class AddDiscountComponent {
 
   agreementTypesList = [this.PERCENTAGE_OFF_SINGLE_PRODUCT, this.PERCENTAGE_OFF_WHOLE_ORDER, this.BUY_X_PAY_Y]
 
+  fb: FormBuilder = inject(FormBuilder);
   _productService: ProductService = inject(ProductService);
   _discountService: DiscountService = inject(DiscountService);
 
