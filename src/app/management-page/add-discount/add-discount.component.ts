@@ -55,7 +55,7 @@ export class AddDiscountComponent {
     let DTO_DiscountAgreement: DTO_DiscountAgreement = {
       productId: this.productID.value?.id,
       agreementType: this.agreementType.value,
-      percentageOff: this.percentageOff.value,
+      percentageOff: this.percentageOff.value ?? 0,
       mustBuyAmount: this.mustBuyAmount.value ?? 0,
       onlyPayForAmount: this.onlyPayForAmount.value ?? 0
     }

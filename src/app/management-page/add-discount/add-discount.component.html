@@ -2,21 +2,20 @@
     <form [formGroup]="myForm">
         <h2>Create a new discount: </h2>
 
-        <!--AGREEMENT TYPE-->
         <div *ngFor="let agreementType of agreementTypesList" class="field-checkbox">
             <p-radioButton [inputId]="agreementType.radioValue" [value]="agreementType.radioValue"
                 formControlName="agreementType"></p-radioButton>
             <label [for]="agreementType.radioValue" class="ml-2">{{ agreementType.label }}</label>
         </div>
-        <!-- AGREEMENT TYPE -->
 
-        <div *ngIf="agreementType.value === PERCENTAGE_OFF_SINGLE_PRODUCT.radioValue" class="field col-12">
+        <div *ngIf="agreementType.value === PERCENTAGE_OFF_SINGLE_PRODUCT.radioValue || agreementType.value === BUY_X_PAY_Y.radioValue"
+            class="field col-12">
             <label for="productName">Select product for discount:</label>
             <p-dropdown formControlName="productID" [options]="_productService.$allProducts()" optionLabel="name"
                 placeholder="Select a product for discount"></p-dropdown>
         </div>
 
-        <div *ngIf="agreementType.value === PERCENTAGE_OFF_SINGLE_PRODUCT.radioValue || PERCENTAGE_OFF_WHOLE_ORDER.radioValue"
+        <div *ngIf="agreementType.value === PERCENTAGE_OFF_SINGLE_PRODUCT.radioValue || agreementType.value === PERCENTAGE_OFF_WHOLE_ORDER.radioValue"
             class="field col-12">
             <label for="percentageOff">Discount %:</label>
             <input id="percentageOff" label="percentageOff" type="number" pInputText formControlName="percentageOff" />
