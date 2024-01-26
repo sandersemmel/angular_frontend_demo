@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Keys } from '../common/Keys';
 import { Customer } from '../model/Customer';
+import { DTO_CreateCustomer } from '../dto/outgoing/DTO_CreateCustomer';
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +26,22 @@ export class DatabaseCustomerService {
     return json;
   }
 
+  async createCustomer(DTO_CreateCustomer: DTO_CreateCustomer) {
+
+    let createCustomer = this.customerUrl + "/createcustomer";
+
+    const requestInit: RequestInit = {
+      method: "post",
+      body: JSON.stringify(DTO_CreateCustomer),
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    let response = await fetch(createCustomer, requestInit);
+
+    console.log(await response.json());
+
+
+  }
 }
