@@ -22,8 +22,28 @@ export class DiscountService {
 
   async fetchDatabaseDiscountAgreements() {
     let agreements = await this._DB_DiscountService.fetchDatabaseAgreements();
+    await this.createLabelsForDiscounts(agreements);
     this.$discounts.set(agreements);
   }
 
+  async createLabelsForDiscounts(agreements: DiscountAgreement[]): Promise<DiscountAgreement[]> {
+    return agreements.map((agreement) => {
 
+      if (agreement.agreementType === "PERCENTAGE_OFF_PRODUCT") {
+        agreement.label = 'Product Discount ' + agreement.product.name + '[' + agreement.product.id + '] ' + agreement.percentageOff + ' %'
+      }
+
+      if (agreement.agreementType === "PERCENTAGE_OFF_WHOLE_ORDER") {
+        agreement.label = 'Order Discount ' + agreement.percentageOff;
+      }
+
+      if (agreement.agreementType === "BUY_X_ONLY_PAY_Y") {
+        agreement.label = 'Buy ' + ' ' + agreement.product.name + '[' + agreement.product.id + '] ' + ' Pay for ' + agreement.onlyPayForAmount;
+      }
+
+      return agreement;
+    });
+
+
+  }
 }
