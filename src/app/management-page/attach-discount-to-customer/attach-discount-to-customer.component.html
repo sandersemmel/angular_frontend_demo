@@ -6,27 +6,10 @@
                 optionLabel="name" placeholder="Select customer"></p-dropdown>
         </div>
         <div class="field col-12">
-            <p-dropdown formControlName="selectedDiscount" [options]="_discountService.$discounts()"
+            <p-dropdown formControlName="selectedDiscount" [options]="_discountService.$discounts()" optionLabel="label"
                 placeholder="Select discount">
-                <ng-template let-option pTemplate="koira">
-                    @if(option.agreementType === "PERCENTAGE_OFF_PRODUCT"){
-                    {{ 'Product Discount ' + option.product.name + '[' + option.product.id + '] ' + option.percentageOff
-                    +
-                    ' %' }}
-                    }
-                    @if(option.agreementType === "PERCENTAGE_OFF_WHOLE_ORDER"){
-                    {{ 'Order Discount '+ ' ' + option.percentageOff + ' %' }}
-                    }
-                    @if(option.agreementType === "BUY_X_ONLY_PAY_Y"){
-                    {{ 'Buy '+ ' ' + option.product.name + '[' + option.product.id + '] ' + ' Pay for ' +
-                    option.onlyPayForAmount }}
-                    }
-
-                </ng-template>
-
             </p-dropdown>
         </div>
-
         <p-button type="submit" (onClick)="attachDiscountToCustomer()">Submit</p-button>
     </form>
 </div>
