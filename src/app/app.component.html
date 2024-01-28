@@ -1,4 +1,7 @@
-<app-top-bar></app-top-bar>
-<app-menu></app-menu>
+<ng-container *ngIf="_authenticationService.$isLoggedIn().isLoggedin === true">
+    <app-top-bar></app-top-bar>
+    <app-menu></app-menu>
+</ng-container>
+
 
 <router-outlet></router-outlet>
