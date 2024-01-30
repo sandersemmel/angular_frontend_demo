@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { DiscountService } from 'src/app/services/discount.service';
 import { ProductService } from 'src/app/services/product.service';
 import { DTO_DiscountAgreement } from 'src/app/dto/DTO_DiscountAgreement';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-add-discount',
@@ -10,6 +11,8 @@ import { DTO_DiscountAgreement } from 'src/app/dto/DTO_DiscountAgreement';
 })
 
 export class AddDiscountComponent {
+
+  _authenticationService: AuthenticationService = inject(AuthenticationService);
 
   //Agreement types
   PERCENTAGE_OFF_SINGLE_PRODUCT = {
@@ -57,7 +60,7 @@ export class AddDiscountComponent {
       agreementType: this.agreementType.value,
       percentageOff: this.percentageOff.value ?? 0,
       mustBuyAmount: this.mustBuyAmount.value ?? 0,
-      onlyPayForAmount: this.onlyPayForAmount.value ?? 0
+      onlyPayForAmount: this.onlyPayForAmount.value ?? 0,
     }
 
     this._discountService.createDatabaseDiscount(DTO_DiscountAgreement);

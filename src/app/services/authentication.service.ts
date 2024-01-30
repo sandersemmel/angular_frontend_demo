@@ -1,5 +1,7 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { Customer } from '../model/Customer';
+import { CustomerService } from './customer.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +9,7 @@ import { Customer } from '../model/Customer';
 export class AuthenticationService {
 
   $isLoggedIn = signal<LoggedUser>({ isLoggedin: false });
+  _router: Router = inject(Router);
 
   constructor() {
     let isLoggedIn: boolean = window.localStorage.getItem("isLoggedIn") as unknown as boolean;
@@ -35,9 +38,12 @@ export class AuthenticationService {
   }
 
   logout() {
-    this.$isLoggedIn.update(currentValue => {
-      return { ...currentValue, isLoggedin: false }
+    window.localStorage.removeItem("isLoggedIn");
+    window.localStorage.removeItem('currentUser');
+    this.$isLoggedIn.update(() => {
+      return { isLoggedin: false }
     });
+    this._router.navigate(['login']);
 
   }
 }

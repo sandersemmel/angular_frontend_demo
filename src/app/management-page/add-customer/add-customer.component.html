@@ -1,14 +1,28 @@
 <ng-container *ngIf="_authenticationService.$isLoggedIn().isLoggedin === false">
-    <h2>Add a new customer: </h2>
-    <div class="p-fluid grid">
-        <form [formGroup]="myForm">
 
-            <div class="field col-12">
-                <label for="customerName">Name:</label>
-                <input id="customerName" label="customerName" type="text" pInputText formControlName="customerName" />
+    <div class="flex flex-column">
+        <div class="flex align-items-center justify-content-center ">
+
+
+            <div class="p-fluid grid ">
+
+                <form [formGroup]="myForm">
+
+                    <div class="field col-12">
+                        <h2>Create user: </h2>
+
+                        <label for="customerName">Name:</label>
+                        <input id="customerName" label="customerName" type="text" pInputText
+                            formControlName="customerName" />
+                    </div>
+
+                    <p-button type="submit" (onClick)="createCustomer()">Submit</p-button>
+                </form>
             </div>
 
-            <p-button type="submit" (onClick)="createCustomer()">Submit</p-button>
-        </form>
+        </div>
+
     </div>
+
+
 </ng-container>

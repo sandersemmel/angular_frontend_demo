@@ -26,8 +26,10 @@ export class CustomerService {
 
   async fetchAllDatabaseCustomers() {
     let db_customers = await this._DB_CustomerService.fetchDatabaseCustomers();
-    if (db_customers) {
+    if (db_customers.length > 0) {
       this.$databaseCustomers.set(db_customers);
+    } else {
+      this._authenticationService.logout();
     }
 
   }

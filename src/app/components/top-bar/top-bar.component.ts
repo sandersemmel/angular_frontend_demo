@@ -7,5 +7,5 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrl: './top-bar.component.css'
 })
 export class TopBarComponent {
-  authenticationService: AuthenticationService = inject(AuthenticationService);
+
 }
