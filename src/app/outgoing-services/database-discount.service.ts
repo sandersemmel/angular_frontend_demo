@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Keys } from '../common/Keys';
 import { DTO_DiscountAgreement } from '../dto/DTO_DiscountAgreement';
 import { DiscountAgreement } from '../model/DiscountAgreement';
+import { DTO_AttachDiscountToCustomer } from '../dto/outgoing/DTO_AttachCustomerToDiscount';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,20 @@ export class DatabaseDiscountService {
 
     let json = await response.json();
     return json;
+  }
+
+  async attachDiscountToCustomer(DTO_AttachCustomerToDiscount: DTO_AttachDiscountToCustomer) {
+    let attachdiscountURL = this.discountUrl + "/attachdiscounttocustomer";
+
+    const requestInit: RequestInit = {
+      method: "post",
+      body: JSON.stringify(DTO_AttachCustomerToDiscount),
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    let response = await fetch(attachdiscountURL, requestInit);
+    return await response.json();
   }
 }

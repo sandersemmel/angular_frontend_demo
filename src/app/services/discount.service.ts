@@ -2,6 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { DatabaseDiscountService } from '../outgoing-services/database-discount.service';
 import { DTO_DiscountAgreement } from '../dto/DTO_DiscountAgreement';
 import { DiscountAgreement } from '../model/DiscountAgreement';
+import { DTO_AttachDiscountToCustomer } from '../dto/outgoing/DTO_AttachCustomerToDiscount';
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +44,8 @@ export class DiscountService {
 
       return agreement;
     });
-
-
+  }
+  async attachDiscountToCustomer(DTO_AttachDiscountToCustomer: DTO_AttachDiscountToCustomer) {
+    this._DB_DiscountService.attachDiscountToCustomer(DTO_AttachDiscountToCustomer);
   }
 }

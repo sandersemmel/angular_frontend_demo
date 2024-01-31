@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DTO_AttachDiscountToCustomer } from 'src/app/dto/outgoing/DTO_AttachCustomerToDiscount';
 import { CustomerService } from 'src/app/services/customer.service';
 import { DiscountService } from 'src/app/services/discount.service';
 
@@ -25,6 +26,11 @@ export class AttachDiscountToCustomerComponent implements OnInit {
   }
 
   attachDiscountToCustomer() {
-    this._customerService.attachDiscountToCustomer(this.selectedCustomer.value.id, this.selectedDiscount.value.id);
+    let attach: DTO_AttachDiscountToCustomer = {
+      customerID: this.selectedCustomer.value.id,
+      discountID: this.selectedCustomer.value.id
+    }
+
+    this._discountService.attachDiscountToCustomer(attach);
   }
 }

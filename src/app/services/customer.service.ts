@@ -10,11 +10,6 @@ import { AuthenticationService } from './authentication.service';
 export class CustomerService {
 
   $allCustomers = signal<Customer[]>([]);
-
-  attachDiscountToCustomer(id: any, id1: any) {
-
-  }
-
   $databaseCustomers = signal<Customer[]>([]);
   _DB_CustomerService: DatabaseCustomerService = inject(DatabaseCustomerService);
   _authenticationService: AuthenticationService = inject(AuthenticationService);
