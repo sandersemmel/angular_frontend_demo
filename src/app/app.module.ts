@@ -33,6 +33,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { AttachDiscountToCustomerComponent } from './management-page/attach-discount-to-customer/attach-discount-to-customer.component';
 import { AddCustomerComponent } from './management-page/add-customer/add-customer.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 
@@ -51,7 +52,8 @@ import { UserprofileComponent } from './components/userprofile/userprofile.compo
     AddDiscountComponent,
     AttachDiscountToCustomerComponent,
     AddCustomerComponent,
-    UserprofileComponent
+    UserprofileComponent,
+    LogoutComponent
 
   ],
   imports: [BrowserModule, AppRoutingModule, CardModule,

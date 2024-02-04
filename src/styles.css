@@ -35,7 +35,7 @@ html.contrast span.mfw {
 }
 @media screen and (prefers-color-scheme: light) {
   html.inverted {
-    background-color: #000;
+    
   }
   html.inverted body {
     color: #d9d9d9;
@@ -43,7 +43,7 @@ html.contrast span.mfw {
   html.inverted #contrast,
   html.inverted #invmode {
     color: #fff;
-    background-color: #000;
+    
   }
   html.inverted blockquote {
     color: #d3c9be;
@@ -63,16 +63,12 @@ html.contrast span.mfw {
   html.inverted span.mfw {
     color: #b00000;
   }
-  html.inverted.contrast {
-    background-color: #000;
-  }
   html.inverted.contrast body {
     color: #fff;
   }
   html.inverted.contrast #contrast,
   html.inverted.contrast #invmode {
     color: #fff;
-    background-color: #000;
   }
   html.inverted.contrast blockquote {
     color: #f8f6f5;
@@ -94,12 +90,8 @@ html.contrast span.mfw {
   }
 }
 @media (prefers-color-scheme: dark) {
-  html:not(.inverted) {
-    background-color: #000;
-  }
-  html:not(.inverted) body {
-    color: #d9d9d9;
-  }
+
+
   html:not(.inverted) #contrast,
   html:not(.inverted) #invmode {
     color: #fff;
@@ -123,9 +115,7 @@ html.contrast span.mfw {
   html:not(.inverted) span.mfw {
     color: #b00000;
   }
-  html:not(.inverted).contrast {
-    background-color: #000;
-  }
+
   html:not(.inverted).contrast body {
     color: #fff;
   }
@@ -309,7 +299,6 @@ button.cont-inv {
 }
 #invmode {
   color: #fff;
-  background-color: #000;
   position: fixed;
   top: 34px;
   text-decoration: underline;

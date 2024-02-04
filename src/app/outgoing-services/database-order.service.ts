@@ -27,6 +27,7 @@ export class DatabaseOrderService {
     );
 
     let json = await response.json();
+    console.log(json);
     return json;
   }
 }
