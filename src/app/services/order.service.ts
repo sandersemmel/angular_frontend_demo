@@ -22,6 +22,9 @@ export class OrderService {
       })
     }
     return order;
+  }
+
+  async getOrders() {
 
   }
 

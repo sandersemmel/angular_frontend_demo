@@ -6,6 +6,8 @@ import { ManagementPageComponent } from './management-page/management-page.compo
 import { AddCustomerComponent } from './management-page/add-customer/add-customer.component';
 import { Guard } from './services/authentication/guard';
 import { OrderCompletePageComponent } from './ordercomplete-page/order-complete-page/order-complete-page.component';
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
+import { UserPageComponent } from './user-page/user-page.component';
 
 const routes: Routes = [
   {
@@ -29,12 +31,20 @@ const routes: Routes = [
   {
     title: "login",
     component: AddCustomerComponent,
-    path: "login"
+    path: "login",
+    canActivate: [Guard]
   },
   {
     title: "complete",
     component: OrderCompletePageComponent,
-    path: "complete"
+    path: "complete",
+    canActivate: [Guard]
+  },
+  {
+    title: "profile",
+    component: UserPageComponent,
+    path: "profile",
+    canActivate: [Guard]
   }
 ];
 

@@ -36,6 +36,7 @@ import { UserprofileComponent } from './components/userprofile/userprofile.compo
 import { LogoutComponent } from './components/logout/logout.component';
 import { OrderCompletePageComponent } from './ordercomplete-page/order-complete-page/order-complete-page.component';
 import { AnimateOnScrollModule } from 'primeng/animateonscroll';
+import { UserPageComponent } from './user-page/user-page.component';
 
 
 
@@ -57,7 +58,8 @@ import { AnimateOnScrollModule } from 'primeng/animateonscroll';
     AddCustomerComponent,
     UserprofileComponent,
     LogoutComponent,
-    OrderCompletePageComponent
+    OrderCompletePageComponent,
+    UserPageComponent
 
   ],
   imports: [BrowserModule, AppRoutingModule, CardModule,
