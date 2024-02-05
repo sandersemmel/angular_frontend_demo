@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { DTO_CreateOrder } from '../dto/outgoing/DTO_CreateOrder';
 import { Keys } from '../common/Keys';
+import { Order } from '../model/Order';
+import { BaseDTO } from '../dto/incoming/BaseDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class DatabaseOrderService {
 
   constructor() { }
 
-  async createDatabaseOrder(DTO_createOrder: DTO_CreateOrder): Promise<void> {
+  async createDatabaseOrder(DTO_createOrder: DTO_CreateOrder): Promise<BaseDTO<Order>> {
     const requestInit: RequestInit = {
       mode: 'cors',
       body: JSON.stringify(DTO_createOrder),
@@ -27,7 +29,6 @@ export class DatabaseOrderService {
     );
 
     let json = await response.json();
-    console.log(json);
     return json;
   }
 }

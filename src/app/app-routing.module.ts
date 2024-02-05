@@ -5,6 +5,7 @@ import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { ManagementPageComponent } from './management-page/management-page.component';
 import { AddCustomerComponent } from './management-page/add-customer/add-customer.component';
 import { Guard } from './services/authentication/guard';
+import { OrderCompletePageComponent } from './ordercomplete-page/order-complete-page/order-complete-page.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,11 @@ const routes: Routes = [
     title: "login",
     component: AddCustomerComponent,
     path: "login"
+  },
+  {
+    title: "complete",
+    component: OrderCompletePageComponent,
+    path: "complete"
   }
 ];
 

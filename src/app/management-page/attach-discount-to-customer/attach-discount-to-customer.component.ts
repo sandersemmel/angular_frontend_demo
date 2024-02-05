@@ -17,6 +17,7 @@ export class AttachDiscountToCustomerComponent implements OnInit {
   selectedDiscount: FormControl = this.fb.control(null, [Validators.required]);
 
   myForm!: FormGroup;
+  loading = false;
 
   ngOnInit() {
     this.myForm = this.fb.group({
@@ -26,10 +27,15 @@ export class AttachDiscountToCustomerComponent implements OnInit {
   }
 
   attachDiscountToCustomer() {
+    this.loading = true;
     let attach: DTO_AttachDiscountToCustomer = {
       customerID: this.selectedCustomer.value.id,
-      discountID: this.selectedCustomer.value.id
+      discountID: this.selectedDiscount.value.id
     }
+
+    setTimeout(() => {
+      this.loading = false;
+    }, 500);
 
     this._discountService.attachDiscountToCustomer(attach);
   }

@@ -1,10 +1,9 @@
-<h1>
-    <p-card [header]="">
-        <p class="">
-            {{product.name}}
-            {{product.price}} €
-        </p>
-        <img src="https://cdn1.jysk.com/getimage/wd2.medium/130905" />
-        <p-button label="Buy" (onClick)="_checkoutService.addProductToCart(product)"></p-button>
-    </p-card>
-</h1>
+<p-card pAnimateOnScroll enterClass="zoomin" [header]="">
+    <p class="">
+        {{product.name}}
+        {{product.price}} €
+    </p>
+    <img src="https://cdn1.jysk.com/getimage/wd2.medium/130905" />
+    <p-button [loading]="loading" [severity]="loading ? 'success' : '' " label=" Buy"
+        (onClick)="buyClicked()"></p-button>
+</p-card>

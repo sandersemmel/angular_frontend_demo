@@ -16,11 +16,7 @@
                 severity=" error" text="This is required. Enter a price."></p-message>
         </div>
 
-        <div class="field col-12">
-            <label for="SKU">SKU</label>
-            <input id="SKU" label="SKU" type="text" pInputText formControlName="SKU" />
-        </div>
-
-        <p-button type="submit" (onClick)="createDatabaseProduct()">Submit</p-button>
+        <p-button [loading]="loading" [severity]="loading ? 'success' : '' " type="submit"
+            (onClick)="createDatabaseProduct()">Submit</p-button>
     </form>
 </div>

@@ -11,9 +11,4 @@ import { ProductService } from '../services/product.service';
 export class ProductPageComponent {
   _productService: ProductService = inject(ProductService);
 
-  ngOnInit() {
-    console.log("Product Page: ");
-    console.log(this._productService.$allProducts());
-  }
-
 }

@@ -11,6 +11,7 @@ import { Product } from 'src/app/model/Product';
 export class AddProductComponent implements OnInit {
 
   _productService: ProductService = inject(ProductService);
+  loading = false;
 
   myForm!: FormGroup;
   fb: FormBuilder = inject(FormBuilder);
@@ -25,7 +26,7 @@ export class AddProductComponent implements OnInit {
   }
 
   createDatabaseProduct() {
-
+    this.loading = true;
     let product: Product = {
       name: this.myForm.get("productName")?.value,
       price: this.myForm.get("productPrice")?.value,
@@ -34,6 +35,9 @@ export class AddProductComponent implements OnInit {
     }
 
     this._productService.createDatabaseProduct(product);
+    setTimeout(() => {
+      this.loading = false;
+    }, 500);
   }
 
 }

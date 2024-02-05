@@ -43,6 +43,7 @@
                 severity=" error" text="Insert numbers only"></p-message>
         </div>
 
-        <p-button type="submit" (onClick)="createDatabaseDiscountAgreement()">Submit</p-button>
+        <p-button [loading]="loading" [severity]="loading ? 'success' : ''" type="submit"
+            (onClick)="createDatabaseDiscountAgreement()">Submit</p-button>
     </form>
 </div>

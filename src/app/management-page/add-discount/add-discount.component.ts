@@ -27,6 +27,7 @@ export class AddDiscountComponent {
     radioValue: "BUY_X_ONLY_PAY_Y",
     label: "Buy x only pay for y"
   };
+  loading = false;
 
   agreementTypesList = [this.PERCENTAGE_OFF_SINGLE_PRODUCT, this.PERCENTAGE_OFF_WHOLE_ORDER, this.BUY_X_PAY_Y]
 
@@ -55,6 +56,7 @@ export class AddDiscountComponent {
   }
 
   createDatabaseDiscountAgreement() {
+    this.loading = true;
     let DTO_DiscountAgreement: DTO_DiscountAgreement = {
       productId: this.productID.value?.id,
       agreementType: this.agreementType.value,
@@ -62,6 +64,10 @@ export class AddDiscountComponent {
       mustBuyAmount: this.mustBuyAmount.value ?? 0,
       onlyPayForAmount: this.onlyPayForAmount.value ?? 0,
     }
+
+    setTimeout(() => {
+      this.loading = false;
+    }, 500);
 
     this._discountService.createDatabaseDiscount(DTO_DiscountAgreement);
   }

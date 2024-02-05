@@ -36,7 +36,5 @@ export class DatabaseProductService {
       },
     }
     let response = await fetch(createProductUrl, requestInit);
-
-    console.log(await response.json());
   }
 }

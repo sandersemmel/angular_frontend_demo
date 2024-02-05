@@ -10,6 +10,7 @@
                 placeholder="Select discount">
             </p-dropdown>
         </div>
-        <p-button type="submit" (onClick)="attachDiscountToCustomer()">Submit</p-button>
+        <p-button [loading]="loading" [severity]="loading ? 'success' : '' " type="submit"
+            (onClick)="attachDiscountToCustomer()">Submit</p-button>
     </form>
 </div>

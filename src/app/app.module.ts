@@ -34,6 +34,9 @@ import { AttachDiscountToCustomerComponent } from './management-page/attach-disc
 import { AddCustomerComponent } from './management-page/add-customer/add-customer.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { OrderCompletePageComponent } from './ordercomplete-page/order-complete-page/order-complete-page.component';
+import { AnimateOnScrollModule } from 'primeng/animateonscroll';
+
 
 
 
@@ -53,7 +56,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     AttachDiscountToCustomerComponent,
     AddCustomerComponent,
     UserprofileComponent,
-    LogoutComponent
+    LogoutComponent,
+    OrderCompletePageComponent
 
   ],
   imports: [BrowserModule, AppRoutingModule, CardModule,
@@ -61,7 +65,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     AvatarGroupModule, RippleModule, BrowserAnimationsModule,
     TableModule, ReactiveFormsModule, FormsModule,
     InputTextModule, MessagesModule, MessageModule, DividerModule, DropdownModule, RadioButtonModule],
-  providers: [ProductService, DatabaseProductService],
+  providers: [ProductService, DatabaseProductService, AnimateOnScrollModule],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

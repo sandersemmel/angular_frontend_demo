@@ -1,0 +1,47 @@
+<h1> Order Complete!</h1>
+<div *ngIf="_orderService.$orders()">
+
+</div>
+
+<div *ngIf="order">
+
+    <p-table [value]="order.sku" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-sku>
+            <tr>
+                <td>{{ sku.product.name }}</td>
+                <td>{{ sku.product.price }} €</td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+
+    <p-table [value]="order.sku" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Total before discounts</th>
+                <th><s>{{order.totalBeforeDiscount}} €</s></th>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+    <p-table [value]="order.sku" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Total after discounts </th>
+                <th>{{order.totalAfterDiscount}} €</th>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+
+
+
+</div>
