@@ -31,8 +31,7 @@ const routes: Routes = [
   {
     title: "login",
     component: AddCustomerComponent,
-    path: "login",
-    canActivate: [Guard]
+    path: "login"
   },
   {
     title: "complete",
